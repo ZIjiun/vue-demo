@@ -38,6 +38,43 @@
             <el-button type="primary" @click="onSubmit">查询</el-button>
         </el-form-item>
     </el-form>
+
+    <!--按鈕-->
+    <el-row>
+        <el-button type="danger">批量刪除</el-button>
+        <el-button type="primary" @click="dialogVisible = true">新增</el-button>
+    </el-row>
+
+    <!--增加資料對話框-->
+    <el-dialog
+            title="編輯品牌"
+            :visible.sync="dialogVisible"
+            width="30%">
+        <el-form ref="form" :model="brand" label-width="80px">
+            <el-form-item label="品牌名稱">
+                <el-input v-model="brand.brandName"></el-input>
+            </el-form-item>
+            <el-form-item label="企業区域">
+                <el-input v-model="brand.companyName"></el-input>
+            </el-form-item>
+            <el-form-item label="排序">
+                <el-input v-model="brand.ordered"></el-input>
+            </el-form-item>
+            <el-form-item label="備註">
+                <el-input type="textarea" v-model="brand.description"></el-input>
+            </el-form-item>
+            <el-form-item label="狀態">
+                <el-switch v-model="brand.status"
+                           active-value="1"
+                           inactive-value="0">
+                </el-switch>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="addBrand">提交</el-button>
+                <el-button @click="dialogVisible = false">取消</el-button>
+            </el-form-item>
+        </el-form>
+    </el-dialog>
     <!--表格-->
     <template>
         <el-table
@@ -110,15 +147,24 @@
             // 查詢方法
             onSubmit() {
                 console.log(this.brand);
+            },
+            // 新增資料
+            addBrand() {
+                console.log(this.brand);
             }
         },
         data() {
             return {
-                // 搜尋表單資料
+                // 增加資料對話框是否展示的標記
+                dialogVisible: false,
+                // 品牌模型資料
                 brand: {
                     status: '',
                     brandName: '',
-                    companyName: ''
+                    companyName: '',
+                    id:"",
+                    ordered:"",
+                    description:""
                 },
                 // 複選框選中資料集合
                 multipleSelection: [],
