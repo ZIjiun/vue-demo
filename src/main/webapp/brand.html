@@ -16,6 +16,28 @@
 <body>
 
 <div id="app">
+
+    <!--搜尋表單-->
+    <el-form :inline="true" :model="brand" class="demo-form-inline">
+        <el-form-item label="當前狀態">
+            <el-select v-model="brand.status" placeholder="當前狀態">
+                <el-option label="啟用" value="1"></el-option>
+                <el-option label="禁用" value="0"></el-option>
+            </el-select>
+        </el-form-item>
+
+        <el-form-item label="企業名稱">
+            <el-input v-model="brand.companyName" placeholder="企業名稱"></el-input>
+        </el-form-item>
+
+        <el-form-item label="品牌名稱">
+            <el-input v-model="brand.brandName" placeholder="品牌名稱"></el-input>
+        </el-form-item>
+
+        <el-form-item>
+            <el-button type="primary" @click="onSubmit">查询</el-button>
+        </el-form-item>
+    </el-form>
     <!--表格-->
     <template>
         <el-table
@@ -84,11 +106,23 @@
             handleSelectionChange(val) {
                 this.multipleSelection = val;
                 console.log(this.multipleSelection);
+            },
+            // 查詢方法
+            onSubmit() {
+                console.log(this.brand);
             }
         },
         data() {
             return {
+                // 搜尋表單資料
+                brand: {
+                    status: '',
+                    brandName: '',
+                    companyName: ''
+                },
+                // 複選框選中資料集合
                 multipleSelection: [],
+                // 表格資料
                 tableData: [{
                     brandName: 'TSMC',
                     companyName: 'TSMC',
