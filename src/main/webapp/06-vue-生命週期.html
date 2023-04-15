@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="./js/vue.js"></script>
+
+<script>
+    // 1. 創建 vue 核心物件
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                username:"",
+                url:"https://www.google.com",
+                count: 3,
+                addrs:["台中","台北","新竹"]
+            }
+        },
+        // data: function () {
+        //     return {
+        //         username:""
+        //     }
+        // }
+        methods: {
+            show(){
+                alert("我被點了...");
+            }
+        },
+        mounted(){
+            alert("加载完成...")
+        }
+        // mounted: function () {
+        //
+        // }
+    });
+
+</script>
+
+</body>
+</html>
