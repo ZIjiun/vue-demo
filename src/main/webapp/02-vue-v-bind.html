@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id = "app">
+<!--    <a v-bind:href="url">點擊一下</a>-->
+    <a :href="url">點擊一下</a>
+
+    <!--使用 input 將視圖與資料做雙向綁定-->
+    <!--視圖改變後，資料內容也跟著改變-->
+    <input v-model="url">
+</div>
+
+<script src="./js/vue.js"></script>
+
+<script>
+    // 1. 創建 vue 核心物件
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                username:"",
+                url:"https://www.google.com"
+            }
+        }
+        // data: function () {
+        //     return {
+        //         username:""
+        //     }
+        // }
+    });
+
+</script>
+
+</body>
+</html>
