@@ -121,6 +121,19 @@
             </el-table-column>
         </el-table>
     </template>
+
+    <!--分頁工具條-->
+    <div class="block">
+        <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="currentPage"
+                :page-sizes="[5, 10, 15, 20]"
+                :page-size="10"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="12">
+        </el-pagination>
+    </div>
 </div>
 
 <script src="./js/vue.js"></script>
@@ -131,6 +144,8 @@
     new Vue({
         el: '#app',
         methods: {
+            // 當前頁碼
+            currentPage: 4,
             tableRowClassName({row, rowIndex}) {
                 if (rowIndex === 1) {
                     return 'warning-row';
@@ -151,6 +166,12 @@
             // 新增資料
             addBrand() {
                 console.log(this.brand);
+            },
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
             }
         },
         data() {
